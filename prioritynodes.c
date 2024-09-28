@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "prioritynodes.h"
+#include "priority_queue.h"
+#include "algorithms.h"
 
 int inc = 0;
 void push(Node** node, int priority, int value) {
@@ -19,13 +20,14 @@ void push(Node** node, int priority, int value) {
     printf("priority: %d, value: %d successfully pushed\n", (*node)[inc -1].priority, (*node)[inc-1].value);
 }
 
+//simple linear search
 Node pop(Node **node) {
     if (inc == 0) {
         printf("Array is empty, cannot pop.\n");
         return (Node){0, 0};  // Return an empty node if array is empty
     }
-        // Get the last node (the one to be popped)
-        Node poppedNode = search(node);
+        // returns highest priority
+        Node poppedNode = search(node, inc);
 
         inc--;
 
@@ -38,23 +40,5 @@ Node pop(Node **node) {
         }
         return poppedNode;
     }
-Node search(Node** node) {
-    int priority = NINF;
-    int index = 0;
-    if(inc == 0) {
-        printf("Error! Cannot search empty array");
-        return (Node){0,0};
-    }
 
-    for (int i = 0; i < inc; i++) {
-        if (node[i] != NULL && (*node)[i].priority >= priority) {
-            priority = (*node)[i].priority;
-            index = i;
-        }
-    }
-    Node highPriority = (*node)[index];
-    (*node)[index] = (*node)[inc - 1];
-
-    return highPriority;
-}
 

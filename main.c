@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "prioritynodes.h"
+#include "priority_queue.h"
 
 int main() {
     Node *node = NULL;
@@ -10,15 +10,15 @@ int main() {
     push(&node, 3,3);
     push(&node, 2,2);
     Node temp;
-    temp = search(&node);
+    temp = pop(&node);
     printf("Priority: %d, Value: %d successfullyPopped\n", temp.priority, temp.value);
-    temp = search(&node);
+    temp = pop(&node);
     printf("Priority: %d, Value: %d successfully Popped\n", temp.priority, temp.value);
-    temp = search(&node);
+    temp = pop(&node);
     printf("Priority: %d, Value: %d successfully Popped\n", temp.priority, temp.value);
-    temp = search(&node);
+    temp = pop(&node);
     printf("Priority: %d, Value: %d successfully Popped\n", temp.priority, temp.value);
-    temp = search(&node);
+    temp = pop(&node);
     printf("Priority: %d, Value: %d successfully Popped\n", temp.priority, temp.value);
 
 

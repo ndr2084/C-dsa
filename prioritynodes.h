@@ -1,15 +1,14 @@
 #ifndef PRIORITYNODES_H
 #define PRIORITYNODES_H
+#define NINF -100;
 
-// Define a custom struct for Node
 typedef struct {
- int value;
- int priority;
-} Node;
+    int priority;
+    int value;
+}Node;
 
-// Function prototypes
-void push(int priority, int value, Node **node);
-Node pop(Node **node);
-
+void push(Node** node, int priority, int value);
+Node pop(Node** node);
+Node search(Node** node);
 
 #endif

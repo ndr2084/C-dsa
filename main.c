@@ -2,23 +2,25 @@
 #include <stdlib.h>
 #include "prioritynodes.h"
 
-int main(void) {
-    Node *node = NULL;   // Initial array pointer is NULL
+int main() {
+    Node *node = NULL;
+    push(&node, 1,1);
+    push(&node, 2,2);
+    push(&node, 69,2);
+    push(&node, 3,3);
+    push(&node, 5,3);
+    Node temp;
+    temp = search(&node);
+    printf("Priority: %d, Value: %d Popped\n", temp.priority, temp.value);
+    temp = search(&node);
+    printf("Priority: %d, Value: %d Popped\n", temp.priority, temp.value);
+    temp = search(&node);
+    printf("Priority: %d, Value: %d Popped\n", temp.priority, temp.value);
+    temp = search(&node);
+    printf("Priority: %d, Value: %d Popped\n", temp.priority, temp.value);
+    temp = search(&node);
+    printf("Priority: %d, Value: %d Popped\n", temp.priority, temp.value);
 
-    // Push and pop elements into the dynamic array
-    push(3, 5, &node);
-    push(1, 10, &node);
-    push(2, 7, &node);
-    printf("%d\n", pop(&node).priority);
-    printf("%d\n", pop(&node).priority);
-    printf("%d\n", pop(&node).priority);
 
-
-
-    // Free the dynamically allocated memory
-    if(node != NULL) {
-        free(node);
-        node = NULL;
-    }
     return 0;
 }

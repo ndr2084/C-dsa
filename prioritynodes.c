@@ -16,7 +16,7 @@ void push(Node** node, int priority, int value) {
     (*node)[inc - 1].value = value;
     (*node)[inc - 1].priority = priority;
 
-    printf("priority: %d, value: %d\n successfully pushed\n", (*node)[inc -1].priority, (*node)[inc-1].value);
+    printf("priority: %d, value: %d successfully pushed\n", (*node)[inc -1].priority, (*node)[inc-1].value);
 }
 
 Node pop(Node** node) {
@@ -36,15 +36,14 @@ Node search(Node** node) {
             index = i;
         }
     }
-    Node temp = (*node)[index];
+    Node highPriority = (*node)[index];
     (*node)[index] = (*node)[inc - 1];
-    (*node)[inc - 1] = temp;
 
     inc--;
     Node *check = realloc(*node, inc * sizeof(Node));
     if(check != NULL) {
         *node = check;
 }
-    return (*node)[index];
+    return highPriority;
 }
 

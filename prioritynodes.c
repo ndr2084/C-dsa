@@ -19,9 +19,25 @@ void push(Node** node, int priority, int value) {
     printf("priority: %d, value: %d successfully pushed\n", (*node)[inc -1].priority, (*node)[inc-1].value);
 }
 
-Node pop(Node** node) {
-    return (Node){0, 0};
-}
+Node pop(Node **node) {
+    if (inc == 0) {
+        printf("Array is empty, cannot pop.\n");
+        return (Node){0, 0};  // Return an empty node if array is empty
+    }
+        // Get the last node (the one to be popped)
+        Node poppedNode = search(node);
+
+        inc--;
+
+        // Resize the array using realloc to avoid memory waste
+        Node *temp = realloc(*node, (inc) * sizeof(Node));
+
+        // Check if memory reallocation was successful
+        if (temp != NULL) {
+            *node = temp;  // Update the pointer only if realloc succeeds
+        }
+        return poppedNode;
+    }
 Node search(Node** node) {
     int priority = NINF;
     int index = 0;
@@ -39,11 +55,6 @@ Node search(Node** node) {
     Node highPriority = (*node)[index];
     (*node)[index] = (*node)[inc - 1];
 
-    inc--;
-    Node *check = realloc(*node, inc * sizeof(Node));
-    if(check != NULL) {
-        *node = check;
-}
     return highPriority;
 }
 

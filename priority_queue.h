@@ -4,5 +4,6 @@
 
 void push(Node** node, int priority, int value);
 Node pop(Node** node);
+void peek(Node **node);
 
 #endif

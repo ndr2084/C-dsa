@@ -27,18 +27,24 @@ Node pop(Node **node) {
         return (Node){0, 0};  // Return an empty node if array is empty
     }
         // returns highest priority
-        Node poppedNode = search(node, inc);
+        int poppedNode = search(node, inc);
+        Node temp = (*node)[poppedNode];
+        (*node)[poppedNode] = (*node)[inc - 1];
 
         inc--;
 
         // Resize the array using realloc to avoid memory waste
-        Node *temp = realloc(*node, (inc) * sizeof(Node));
+        Node *check = realloc(*node, (inc) * sizeof(Node));
 
         // Check if memory reallocation was successful
-        if (temp != NULL) {
-            *node = temp;  // Update the pointer only if realloc succeeds
+        if (check != NULL) {
+            *node = check;  // Update the pointer only if realloc succeeds
         }
-        return poppedNode;
+        return temp;
     }
 
+void peek(Node** node) {
+    int temp = search(node, inc);
+    printf("PEEK: priority: %d, value:%d\n", (*node)[temp].priority, (*node)[temp].value);
+}
 

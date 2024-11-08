@@ -1,5 +1,5 @@
 //
-// Created by william on 11/7/24.
+// Created by Nathan on 11/7/24.
 //
 #include <signal.h>
 #include <stdio.h>

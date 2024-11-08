@@ -4,8 +4,6 @@
 #include <string.h>
 #include "bst.h"
 
-//USER DEFINED OBJECTS
-
 int main() {
     BST_node_t *root = NULL;
     while (1) {

@@ -6,16 +6,15 @@
 #include <stdlib.h>
 #include "bst.h"
 
-BST_node_t *get_new_node(int data) {
-    BST_node_t *new_node = malloc(sizeof(BST_node_t));
-    new_node->data = data;
-    new_node->l = NULL;
-    new_node->r = NULL;
-    return new_node;
+void get_new_node(int data, BST_node_t **root) {
+    *root = malloc(sizeof(BST_node_t));
+    (*root)->data = data;
+    (*root)->l = NULL;
+    (*root)->r = NULL;
 }
 
-BST_node_t *insert(int data, BST_node_t *root) {
-    BST_node_t* parent = root;
+void insert(int data, BST_node_t **root) {
+    BST_node_t* parent = *root;
     BST_node_t* current = NULL;
 
     while(parent != NULL) {
@@ -28,22 +27,22 @@ BST_node_t *insert(int data, BST_node_t *root) {
         }
     }
     if(current == NULL) {
-        root = get_new_node(data);
+        get_new_node(data, root);
     }
     else if (data < current->data) {
-        current->l = get_new_node(data);
+        get_new_node(data, &current->l);
     }
     else {
-        current->r = get_new_node(data);
+        get_new_node(data, &current->r);
     }
     return root;
 }
 
-void inorder(BST_node_t *root) {
-    if(root != NULL) {
-        inorder(root->l);
-        printf("%d\n", root->data);
-        inorder(root->r);
+void inorder(BST_node_t **root) {
+    if(*root != NULL) {
+        inorder(&(*root)->l);
+        printf("%d\n", (*root)->data);
+        inorder(&(*root)->r);
     }
 
 }

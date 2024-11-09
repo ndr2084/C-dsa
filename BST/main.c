@@ -10,15 +10,24 @@ int main() {
         int input;
         char line[128];
         printf("input number> ");
-        if (fgets(line, sizeof(line), stdin) == NULL) //user input is ctrl + D
+        if (fgets(line, sizeof(line), stdin) == NULL) {
+            //ctrl + D
+            printf("Done\n\n\n");
             break;
+        }
         if (strlen(line) <= 1) //user hit enter
             continue;
         if (sscanf(line, "%d", &input) == 0) {
             printf("Invalid input\n");
             continue;
         }
-        root = insert(input, root);
+        insert(input, &root);
     }
-    inorder(root);
+    inorder(&root);
+
 }
+
+/*
+ *https://stackoverflow.com/questions/70908380/how-to-use-double-pointers-in-binary-search-tree-data-structure-in-c
+ *
+*/

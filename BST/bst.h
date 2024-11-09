@@ -14,13 +14,13 @@ typedef struct BST {
 
 
 /*SUPPORTED FUNCTIONS*/
-BST_node_t *get_new_node(int data);
+void get_new_node(int data, BST_node_t **root);
 
-BST_node_t *insert(int data, BST_node_t *root);
+void insert(int data, BST_node_t **root);
 
-BST_node_t *search(int data, BST_node_t);
+void search(int data, BST_node_t);
 
-void inorder(BST_node_t *root);
+void inorder(BST_node_t **root);
 
 
 #endif //BST_H

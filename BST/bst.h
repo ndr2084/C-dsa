@@ -1,6 +1,7 @@
 //
 // Created by Nathan on 11/7/24.
 //
+/*TODO: actually implement search and do the rest of the supported functions*/ 
 
 #ifndef BST_H
 #define BST_H
@@ -21,6 +22,8 @@ void insert(int data, BST_node_t **root);
 void search(int data, BST_node_t);
 
 void inorder(BST_node_t **root);
+
+
 
 
 #endif //BST_H
